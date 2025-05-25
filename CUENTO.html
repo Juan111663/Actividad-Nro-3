@@ -1,0 +1,122 @@
+
+<!-- Definir el lenguaje como html y el idioma como español -->
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- seccion de encabezado -->
+<head>
+
+  <meta charset="UTF-8" /><!-- Permite caracteres especiales -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- Permite ver el sitio en celulares -->
+  <title>Generador de Cuentos</title> <!-- Nombre que aparecerá en la pestaña del navegador -->
+  <!-- Define como se veran los textos-->
+  <style>
+    body {
+      font-family: Arial, sans-serif; 
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+      background-color: #f4f4f4; 
+    }
+
+    h1 {
+      text-align: center;
+      color: #a2ef08;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #921010;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #7a0d0d;
+    }
+
+    #cuento-generado {
+      margin-top: 30px;
+      font-style: italic;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Diseña tu cuento</h1> <!-- Titulo princpial  -->
+
+
+<!-- Formulario de entrada -->
+  <form id="form-cuento" onsubmit="crearCuento(event)">
+    <label for="nombre">Nombres y apellidos:</label>
+    <input type="text" id="nombre" required> <!-- Cada seccion con un ID unico -->
+
+    <label for="apodo">Apodo:</label>
+    <input type="text" id="apodo" required>
+
+    <label for="cabello">Color de cabello:</label>
+    <input type="text" id="cabello" required>
+
+    <label for="ojos">Color de ojos:</label><!-- Letrero de informacion a llenar-->
+    <input type="text" id="ojos" required> <!-- Campo para llenar -->
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" min="1" required>
+
+    <label for="hobby">Hobby:</label>
+    <input type="text" id="hobby" required>
+
+    <input type="submit" value="Continuar"> <!-- Boton para enviar -->
+  </form>
+
+  <div id="cuento-generado"></div>
+
+  <script> 
+    function crearCuento(event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const apodo = document.getElementById("apodo").value.trim();
+      const cabello = document.getElementById("cabello").value.trim();
+      const ojos = document.getElementById("ojos").value.trim();
+      const edad = document.getElementById("edad").value.trim();
+      const hobby = document.getElementById("hobby").value.trim();
+
+      const cuento = `
+        <p>Había una vez una persona llamada <strong>${nombre}</strong>, aunque todos le decían <strong>${apodo}</strong>.
+        Tenía el cabello de color <strong>${cabello}</strong> y unos ojos <strong>${ojos}</strong> que brillaban con curiosidad.
+        A sus <strong>${edad}</strong> años, <strong>${apodo}</strong> pasaba horas disfrutando de su pasatiempo favorito: <strong>${hobby}</strong>.
+        Un día, ese hobby lo llevó a vivir una aventura inesperada que cambiaría su vida para siempre...</p>
+      `;
+
+      document.getElementById("cuento-generado").innerHTML = cuento;
+    }
+  </script>
+
+</body>
+</html>
+
